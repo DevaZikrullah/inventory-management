@@ -3,12 +3,11 @@ from datetime import date
 from typing import List, Annotated
 
 class PurchaseLine(BaseModel):
-    purchase_id: Annotated[int, Field(min_length=1)]
-    product_id: Annotated[int, Field(min_length=1)]
-    qty: Annotated[int, Field(min_length=1)]
-    taxes: Annotated[float, Field(min_length=1)] 
-    total: Annotated[float, Field(min_length=1)] 
-    
+    product_id: Annotated[int, Field(ge=1)] 
+    uom_id: Annotated[int, Field(ge=1)]  
+    qty: Annotated[int, Field(ge=1)]  
+    taxes: Annotated[float, Field(ge=0)] 
+    total: Annotated[float, Field(ge=0)]    
 
 class PurchaseSchema(BaseModel):
     purchase_number: Annotated[str, Field(min_length=1)] 

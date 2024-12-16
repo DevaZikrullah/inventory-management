@@ -10,14 +10,18 @@ class PurchaseRepository:
         return purchase
 
 
-    def post(purchase_data ,purchase_line_data):
+    def post_purchase(purchase_data):
         purchase  = Purchase(**purchase_data)
         db.session.add(purchase)
         db.session.commit()
-        purchase_line = PurchaseLine(**purchase_line_data,purchase_id=purchase.id)
+        return purchase
+    
+    def post_purchase_line(purchase_line_data,purchase_id :int):
+        purchase_line = PurchaseLine(**purchase_line_data,purchase_id=purchase_id)
         db.session.add(purchase_line)
         db.session.commit()
-        return Purchase.query.all()
+        return purchase_line
+
 
     def getByNumber(purchase_number):
         purchase = Purchase.query.filter_by(purchase_number=purchase_number).first()
