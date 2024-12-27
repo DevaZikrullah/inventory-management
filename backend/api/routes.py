@@ -3,6 +3,7 @@ from .Controller.authController import authentication
 from .Controller.productController import productRoute
 from .Controller.uomController import uomRoute
 from .Controller.purchaseController import purchaseRoute
+from .Controller.locationController import locationRoute
 
 api = Blueprint('api', __name__, url_prefix='/api')
 web = Blueprint('web',__name__)
@@ -10,6 +11,7 @@ web = Blueprint('web',__name__)
 api.register_blueprint(productRoute)
 api.register_blueprint(purchaseRoute)
 api.register_blueprint(authentication)
+api.register_blueprint(locationRoute)
 api.register_blueprint(uomRoute)
 
 
