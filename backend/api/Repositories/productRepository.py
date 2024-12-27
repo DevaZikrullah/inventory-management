@@ -20,3 +20,7 @@ class ProductRepository:
         product = Product.query.filter_by(name=name).first()
         return product
     
+    def getById(id :int):
+        product = Product.query.get(id)
+        return product
+    

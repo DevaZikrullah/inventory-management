@@ -5,6 +5,8 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token,get_jwt_identity
 from flask_cors import CORS  
+from pydantic import ValidationError
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,4 +23,4 @@ def test():
     print('work')
 
 from api import routes
-from api.Models import *
+from api.Models import product,purchase,uom,location
